@@ -1,5 +1,7 @@
 import 'package:cirilla/models/product_model.dart';
 
+import 'category_model.dart';
+
 class Home {
   bool status;
   String message;
@@ -37,25 +39,13 @@ class Data {
 class Banners {
   int id;
   String image;
-  Category category;
-  Null product;
+  CategoryItem category;
+  Product product;
 
   Banners.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     image = json['image'];
-    category = json['category'] != null ? new Category.fromJson(json['category']) : null;
-    product = json['product'];
-  }
-}
-// TODO: Separate this class into its own model
-class Category {
-  int id;
-  String image;
-  String name;
-
-  Category.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    image = json['image'];
-    name = json['name'];
+    category = json['category'] != null ? new CategoryItem.fromJson(json['category']) : null;
+    product = json['product'] != null ? Product.fromJson(json['product']) : null;
   }
 }

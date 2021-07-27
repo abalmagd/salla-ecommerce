@@ -7,4 +7,4 @@ const String UPDATE_PROFILE = 'update-profile';
 const String CATEGORIES = 'categories';
 const String FAVORITES = 'favorites';
 const String HOME = 'home';
-const String SEARCH = 'search';
+const String SEARCH = 'products/search';

@@ -1,44 +1,38 @@
 import 'package:flutter/material.dart';
 
 class TextThemes {
-  static TextTheme textThemes(BuildContext context) {
-    return TextTheme(
-      // Headlines
-      headline5: TextStyle(
-        fontSize: 24,
-        fontFamily: 'assets/fonts/Roboto-Regular.ttf',
-        fontWeight: FontWeight.w600,
-      ),
+  static TextStyle itemPrice(context) => TextStyle(
+        color: Theme.of(context).primaryColor,
+        fontSize: 16.0,
+      );
 
-      // Normal text
-      bodyText1: TextStyle(
-        letterSpacing: 0.25,
-        fontSize: 14,
-        fontWeight: FontWeight.normal,
-      ),
-
-      // Normal bigger text (ie: price)
-      bodyText2: TextStyle(
-        letterSpacing: 0.5,
-        fontSize: 16,
-        fontWeight: FontWeight.normal,
-      ),
-
-
-      // Home screen grid item old price
-      headline6: TextStyle(
-        fontSize: 14,
-        letterSpacing: 0.25,
-        color: Colors.grey,
+  static TextStyle itemOldPrice(BuildContext context) => TextStyle(
+        color: Colors.grey[600],
+        fontSize: 14.0,
         decoration: TextDecoration.lineThrough,
-      ),
+      );
 
+  static TextStyle normalText(BuildContext context) => TextStyle(
+        fontSize: 18.0,
+      );
 
-      // Subtexts (ie: Auth register/login prompt, Home categories text)
-      subtitle1: TextStyle(
-        fontSize: 12,
-        color: Colors.grey,
-      ),
-    );
-  }
+  static TextStyle subText(BuildContext context) => TextStyle(
+        fontSize: 14.0,
+        color: Colors.white,
+      );
+
+  static TextStyle sectionHeader(BuildContext context) => TextStyle(
+        fontSize: 22.0,
+        fontWeight: FontWeight.w600,
+      );
+
+  static TextStyle appBarTitle(BuildContext context) => TextStyle(
+        fontSize: 20.0,
+        fontWeight: FontWeight.bold,
+      );
+
+  static TextStyle formTitle(BuildContext context) => TextStyle(
+        color: Theme.of(context).primaryColor,
+        fontSize: 64.0,
+      );
 }

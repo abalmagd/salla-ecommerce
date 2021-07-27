@@ -25,6 +25,8 @@ dependencies:
     sdk: flutter
 
   conditional_builder: ^1.0.2
+  flutter_svg: ^0.22.0
+
 
   # BLoC
   flutter_bloc: ^7.0.1
@@ -32,9 +34,13 @@ dependencies:
 
   # Network
   dio: ^4.0.0
+
+  # Local Storage
+  sqflite: ^2.0.0+3
+  shared_preferences: ^2.0.6
     
   # Widgets
-  shimmer: ^1.1.2
+  cached_network_image: ^3.1.0
     # home_screen
   carousel_slider: 4.0.0
 
@@ -62,6 +68,9 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+
+  assets:
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

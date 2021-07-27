@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 
-Widget likeButton({
-  @required bool isLiked,
-  @required Function onPressed,
-}) =>
-    CircleAvatar(
+class FavoriteButton extends StatelessWidget {
+  final bool isLiked;
+  final Function onPressed;
+
+  const FavoriteButton({
+    Key key,
+    this.isLiked,
+    this.onPressed,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
       radius: 15,
       backgroundColor: Colors.transparent,
       child: IconButton(
@@ -15,3 +23,5 @@ Widget likeButton({
         onPressed: onPressed,
       ),
     );
+  }
+}
