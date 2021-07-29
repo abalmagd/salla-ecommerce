@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cirilla/blocs/app_bloc/app_cubit.dart';
 import 'package:cirilla/blocs/app_bloc/app_states.dart';
 import 'package:cirilla/models/product_model.dart';
@@ -39,10 +38,13 @@ class ProductScreen extends StatelessWidget {
                 InteractiveViewer(
                   minScale: 0.5,
                   maxScale: 2.0,
-                  child: CachedNetworkImage(
-                    width: double.infinity,
-                    height: 300,
-                    imageUrl: AppCubit.get(context).productImage,
+                  child: Container(
+                    color: Colors.white,
+                    child: CachedNetworkImage(
+                      width: double.infinity,
+                      height: 300,
+                      imageUrl: AppCubit.get(context).productImage,
+                    ),
                   ),
                 ),
                 SizedBox(height: 8.0),

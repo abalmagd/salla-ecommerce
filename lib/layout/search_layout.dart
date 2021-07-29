@@ -7,16 +7,35 @@ import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SearchLayout extends StatelessWidget {
-  static final TextEditingController searchController = TextEditingController();
+class SearchLayout extends StatefulWidget {
   final String query;
-  final FocusNode _node = FocusNode();
 
   SearchLayout({Key key, this.query}) : super(key: key);
 
   @override
+  _SearchLayoutState createState() => _SearchLayoutState();
+}
+
+class _SearchLayoutState extends State<SearchLayout> {
+  final FocusNode _node = FocusNode();
+  TextEditingController searchController;
+
+  @override
+  void initState() {
+    super.initState();
+    searchController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    searchController.dispose();
+    SqfliteHelper.dbClose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    searchController.value = TextEditingValue(text: query ?? '');
+    searchController.value = TextEditingValue(text: widget.query ?? '');
     return BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -26,11 +45,8 @@ class SearchLayout extends StatelessWidget {
               leading: IconButton(
                 icon: Icon(Icons.arrow_back),
                 onPressed: () {
-                  SqfliteHelper.dbClose();
-                  searchController.clear();
                   AppCubit.get(context).searchResults = null;
                   AppCubit.get(context).isSearching = false;
-                  // searchController.dispose();
                   Navigator.pop(context);
                 },
               ),
@@ -74,11 +90,13 @@ class SearchLayout extends StatelessWidget {
                 ),
               ),
             ),
-            body: Center(
-              child: ConditionalBuilder(
-                condition: AppCubit.get(context).isSearching,
-                builder: (context) => SearchResultsScreen(),
-                fallback: (context) => SearchScreen(),
+            body: ConditionalBuilder(
+              condition: AppCubit.get(context).isSearching,
+              builder: (context) => SearchResultsScreen(),
+              fallback: (context) => SearchScreen(
+                fn: (String query) {
+                  searchController.text = query;
+                },
               ),
             ),
           );

@@ -1,8 +1,11 @@
 import 'package:cirilla/blocs/app_bloc/app_cubit.dart';
-import 'package:cirilla/layout/search_layout.dart';
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatelessWidget {
+  final Function fn;
+
+  const SearchScreen({this.fn});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -10,6 +13,9 @@ class SearchScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Visibility(
+            child: Container(),
+          ),
           Row(
             children: [
               Text(
@@ -34,10 +40,9 @@ class SearchScreen extends StatelessWidget {
             child: ListView.separated(
               itemBuilder: (context, index) => HistoryBuilder(
                 textOnPressed: () {
-                  SearchLayout.searchController.text =
-                      AppCubit.get(context).searchHistory[index]['query'].toString();
-                  AppCubit.get(context).getSearch(
-                      AppCubit.get(context).searchHistory[index]['query'].toString());
+                  fn(AppCubit.get(context).searchHistory[index]['query'].toString());
+                  AppCubit.get(context)
+                      .getSearch(AppCubit.get(context).searchHistory[index]['query'].toString());
                   AppCubit.get(context).isSearching = true;
                 },
                 buttonOnPressed: () {

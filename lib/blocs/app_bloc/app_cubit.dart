@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:cirilla/models/category_model.dart';
 import 'package:cirilla/models/favourites_model.dart';
 import 'package:cirilla/models/home_model.dart';
-import 'package:cirilla/models/response_model.dart';
 import 'package:cirilla/models/search_model.dart';
 import 'package:cirilla/models/user_model.dart';
 import 'package:cirilla/screens/favorites_screen.dart';

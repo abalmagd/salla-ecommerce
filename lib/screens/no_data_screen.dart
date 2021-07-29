@@ -12,8 +12,13 @@ class NoDataScreen extends StatelessWidget {
       padding: const EdgeInsets.all(18.0),
       child: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(ILLUSTRATION_NO_DATA, width: 300, height: 300,),
+            SvgPicture.asset(
+              ILLUSTRATION_NO_DATA,
+              width: 300,
+              height: 300,
+            ),
             SizedBox(height: 18.0),
             Text(
               'It is empty here',
