@@ -26,6 +26,7 @@ dependencies:
 
   conditional_builder: ^1.0.2
   flutter_svg: ^0.22.0
+  image: ^3.0.2
 
 
   # BLoC

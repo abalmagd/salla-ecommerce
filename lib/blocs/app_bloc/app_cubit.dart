@@ -18,6 +18,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'app_states.dart';
 
+import 'package:image/image.dart' as Img;
+
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitialState());
 
@@ -55,12 +57,11 @@ class AppCubit extends Cubit<AppStates> {
   }
 
   void dbInit() {
-    emit(SearchScreenState());
     SqfliteHelper.dbInit().then((value) {
       dbGet();
       emit(AppInitDatabaseSuccessState());
     }).catchError((error) {
-      print(error);
+      debugPrint(error);
       emit(AppInitDatabaseErrorState());
     });
   }

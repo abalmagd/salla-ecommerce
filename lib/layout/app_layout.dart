@@ -19,54 +19,69 @@ class AppLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppCubit cubit = AppCubit.get(context);
     return BlocConsumer<AppCubit, AppStates>(
       listener: (BuildContext context, state) {},
       builder: (BuildContext context, state) => Scaffold(
-        // drawer: Drawer(),
-        appBar: AppBar(
-          title: Text(
-            'Salla',
-            style: TextThemes.appBarTitle(context),
+          drawer: Drawer(),
+          appBar: AppBar(
+            title: Text(
+              'Salla',
+              style: TextThemes.appBarTitle(context),
+            ),
+            actions: [
+              IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {
+                    cubit.emit(SearchScreenState());
+                    cubit.dbInit();
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (context) => SearchLayout()));
+                  }),
+            ],
           ),
-          actions: [
-            IconButton(
-                icon: Icon(Icons.search),
-                onPressed: () {
-                  AppCubit.get(context).dbInit();
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => SearchLayout()));
-                }),
-          ],
+          body: _screens[cubit.bottomNavIndex],
+          bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            currentIndex: cubit.bottomNavIndex,
+            onTap: (index) => cubit.changeBottomNavIndex(index),
+            unselectedItemColor: Theme.of(context).accentColor,
+            selectedItemColor: Theme.of(context).primaryColor,
+            backgroundColor: Colors.white,
+            showUnselectedLabels: true,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home_outlined),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.apps),
+                label: 'Categories',
+              ),
+              BottomNavigationBarItem(
+                icon: Stack(
+                  alignment: Alignment.topRight,
+                  children: [
+                    Icon(Icons.favorite_border_outlined),
+                    Visibility(
+                      visible: cubit.favoriteList.values.contains(true),/*cubit
+                      .favorites.data.data.length >= 1,*/
+                      child: CircleAvatar(
+                        backgroundColor: Colors.red,
+                        radius: 4,
+                      ),
+                    ),
+                  ],
+                ),
+                label: 'Favorites',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person_outline),
+                label: 'Me',
+              ),
+            ],
+          ),
         ),
-        body: _screens[AppCubit.get(context).bottomNavIndex],
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          currentIndex: AppCubit.get(context).bottomNavIndex,
-          onTap: (index) => AppCubit.get(context).changeBottomNavIndex(index),
-          unselectedItemColor: Theme.of(context).accentColor,
-          selectedItemColor: Theme.of(context).primaryColor,
-          backgroundColor: Colors.white,
-          showUnselectedLabels: true,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.apps),
-              label: 'Categories',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite_border_outlined),
-              label: 'Favorites',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline),
-              label: 'Me',
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
