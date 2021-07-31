@@ -1,11 +1,11 @@
-import 'package:cirilla/blocs/app_bloc/app_cubit.dart';
-import 'package:cirilla/blocs/app_bloc/app_states.dart';
-import 'package:cirilla/screens/no_data_screen.dart';
-import 'package:cirilla/widgets/product_list_builder.dart';
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:cirilla/widgets/widgets.dart';
+import 'package:salla/blocs/app_bloc/app_cubit.dart';
+import 'package:salla/blocs/app_bloc/app_states.dart';
+import 'package:salla/screens/no_data_screen.dart';
+import 'package:salla/widgets/product_list_builder.dart';
+import 'package:salla/widgets/widgets.dart';
 
 class SearchResultsScreen extends StatelessWidget {
   @override

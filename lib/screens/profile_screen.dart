@@ -1,8 +1,8 @@
-import 'package:cirilla/blocs/app_bloc/app_cubit.dart';
-import 'package:cirilla/blocs/app_bloc/app_states.dart';
-import 'package:cirilla/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salla/blocs/app_bloc/app_cubit.dart';
+import 'package:salla/blocs/app_bloc/app_states.dart';
+import 'package:salla/widgets/widgets.dart';
 
 import 'auth/login_screen.dart';
 

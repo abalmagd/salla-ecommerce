@@ -1,12 +1,12 @@
-import 'package:cirilla/blocs/app_bloc/app_cubit.dart';
-import 'package:cirilla/blocs/app_bloc/app_states.dart';
-import 'package:cirilla/models/favourites_model.dart';
-import 'package:cirilla/screens/no_data_screen.dart';
-import 'package:cirilla/widgets/product_grid_builder.dart';
-import 'package:cirilla/widgets/product_list_builder.dart';
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salla/blocs/app_bloc/app_cubit.dart';
+import 'package:salla/blocs/app_bloc/app_states.dart';
+import 'package:salla/models/favourites_model.dart';
+import 'package:salla/screens/no_data_screen.dart';
+import 'package:salla/widgets/product_grid_builder.dart';
+import 'package:salla/widgets/product_list_builder.dart';
 
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({Key key}) : super(key: key);

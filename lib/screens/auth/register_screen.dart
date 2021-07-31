@@ -1,11 +1,11 @@
-import 'package:cirilla/blocs/auth_bloc/auth_cubit.dart';
-import 'package:cirilla/blocs/auth_bloc/auth_states.dart';
-import 'package:cirilla/layout/app_layout.dart';
-import 'package:cirilla/shared/styles/text.dart';
-import 'package:cirilla/widgets/button.dart';
-import 'package:cirilla/widgets/input_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salla/blocs/auth_bloc/auth_cubit.dart';
+import 'package:salla/blocs/auth_bloc/auth_states.dart';
+import 'package:salla/layout/app_layout.dart';
+import 'package:salla/shared/styles/text.dart';
+import 'package:salla/widgets/button.dart';
+import 'package:salla/widgets/input_form_field.dart';
 
 import 'login_screen.dart';
 

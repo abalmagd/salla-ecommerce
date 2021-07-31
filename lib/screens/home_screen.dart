@@ -1,16 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:cirilla/blocs/app_bloc/app_cubit.dart';
-import 'package:cirilla/blocs/app_bloc/app_states.dart';
-import 'package:cirilla/layout/search_layout.dart';
-import 'package:cirilla/models/category_model.dart';
-import 'package:cirilla/models/home_model.dart';
-import 'package:cirilla/shared/styles/text.dart';
-import 'package:cirilla/widgets/product_list_builder.dart';
-import 'package:cirilla/widgets/widgets.dart';
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salla/blocs/app_bloc/app_cubit.dart';
+import 'package:salla/blocs/app_bloc/app_states.dart';
+import 'package:salla/layout/search_layout.dart';
+import 'package:salla/models/category_model.dart';
+import 'package:salla/models/home_model.dart';
+import 'package:salla/shared/styles/text.dart';
+import 'package:salla/widgets/product_list_builder.dart';
+import 'package:salla/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

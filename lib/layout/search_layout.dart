@@ -1,11 +1,11 @@
-import 'package:cirilla/blocs/app_bloc/app_cubit.dart';
-import 'package:cirilla/blocs/app_bloc/app_states.dart';
-import 'package:cirilla/screens/search_results_screen.dart';
-import 'package:cirilla/screens/search_screen.dart';
-import 'package:cirilla/shared/local/sqflite_helper.dart';
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salla/blocs/app_bloc/app_cubit.dart';
+import 'package:salla/blocs/app_bloc/app_states.dart';
+import 'package:salla/screens/search_results_screen.dart';
+import 'package:salla/screens/search_screen.dart';
+import 'package:salla/shared/local/sqflite_helper.dart';
 
 class SearchLayout extends StatefulWidget {
   final String query;

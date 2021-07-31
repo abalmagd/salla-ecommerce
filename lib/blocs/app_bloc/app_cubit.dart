@@ -1,24 +1,22 @@
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
-import 'package:cirilla/models/category_model.dart';
-import 'package:cirilla/models/favourites_model.dart';
-import 'package:cirilla/models/home_model.dart';
-import 'package:cirilla/models/search_model.dart';
-import 'package:cirilla/models/user_model.dart';
-import 'package:cirilla/screens/favorites_screen.dart';
-import 'package:cirilla/screens/home_screen.dart';
-import 'package:cirilla/screens/search_results_screen.dart';
-import 'package:cirilla/shared/local/cache_helper.dart';
-import 'package:cirilla/shared/local/sqflite_helper.dart';
-import 'package:cirilla/shared/network/remote/api_end_points.dart';
-import 'package:cirilla/shared/network/remote/dio_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salla/models/category_model.dart';
+import 'package:salla/models/favourites_model.dart';
+import 'package:salla/models/home_model.dart';
+import 'package:salla/models/search_model.dart';
+import 'package:salla/models/user_model.dart';
+import 'package:salla/screens/favorites_screen.dart';
+import 'package:salla/screens/home_screen.dart';
+import 'package:salla/screens/search_results_screen.dart';
+import 'package:salla/shared/local/cache_helper.dart';
+import 'package:salla/shared/local/sqflite_helper.dart';
+import 'package:salla/shared/network/remote/api_end_points.dart';
+import 'package:salla/shared/network/remote/dio_helper.dart';
 
 import 'app_states.dart';
-
-import 'package:image/image.dart' as Img;
 
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitialState());

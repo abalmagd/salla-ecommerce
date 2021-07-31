@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
-import 'package:cirilla/models/user_model.dart';
-import 'package:cirilla/shared/local/cache_helper.dart';
-import 'package:cirilla/shared/network/remote/api_end_points.dart';
-import 'package:cirilla/shared/network/remote/dio_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salla/models/user_model.dart';
+import 'package:salla/shared/local/cache_helper.dart';
+import 'package:salla/shared/network/remote/api_end_points.dart';
+import 'package:salla/shared/network/remote/dio_helper.dart';
 
 import 'auth_states.dart';
 

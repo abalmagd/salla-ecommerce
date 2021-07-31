@@ -1,7 +1,7 @@
-import 'package:cirilla/shared/constants.dart';
-import 'package:cirilla/shared/styles/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:salla/shared/constants.dart';
+import 'package:salla/shared/styles/text.dart';
 
 class NoDataScreen extends StatelessWidget {
   const NoDataScreen({Key key}) : super(key: key);

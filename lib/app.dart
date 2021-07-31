@@ -1,8 +1,8 @@
-import 'package:cirilla/blocs/app_bloc/app_cubit.dart';
-import 'package:cirilla/screens/auth/on_boarding_screen.dart';
-import 'package:cirilla/shared/local/cache_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salla/blocs/app_bloc/app_cubit.dart';
+import 'package:salla/screens/auth/on_boarding_screen.dart';
+import 'package:salla/shared/local/cache_helper.dart';
 
 import 'blocs/auth_bloc/auth_cubit.dart';
 import 'config/themes.dart';

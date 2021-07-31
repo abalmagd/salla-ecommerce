@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cirilla/blocs/app_bloc/app_cubit.dart';
-import 'package:cirilla/blocs/app_bloc/app_states.dart';
-import 'package:cirilla/models/product_model.dart';
-import 'package:cirilla/shared/styles/text.dart';
-import 'package:cirilla/widgets/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salla/blocs/app_bloc/app_cubit.dart';
+import 'package:salla/blocs/app_bloc/app_states.dart';
+import 'package:salla/models/product_model.dart';
+import 'package:salla/shared/styles/text.dart';
+import 'package:salla/widgets/favorite_button.dart';
 
 class ProductScreen extends StatelessWidget {
   final Product product;

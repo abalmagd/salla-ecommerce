@@ -1,4 +1,4 @@
-import 'package:cirilla/models/product_model.dart';
+import 'package:salla/models/product_model.dart';
 
 import 'category_model.dart';
 

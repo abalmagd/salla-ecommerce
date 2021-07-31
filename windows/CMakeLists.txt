@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(cirilla LANGUAGES CXX)
+project(salla LANGUAGES CXX)
 
-set(BINARY_NAME "cirilla")
+set(BINARY_NAME "salla")
 
 cmake_policy(SET CMP0063 NEW)
 

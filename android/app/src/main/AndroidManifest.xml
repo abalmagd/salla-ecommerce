@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.cirilla">
-   <application
-        android:label="cirilla"
+    package="com.example.salla">
+
+    <application
+        android:label="salla"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

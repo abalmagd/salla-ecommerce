@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cirilla/blocs/app_bloc/app_cubit.dart';
-import 'package:cirilla/models/favourites_model.dart';
-import 'package:cirilla/models/product_model.dart';
-import 'package:cirilla/screens/product_screen.dart';
-import 'package:cirilla/shared/styles/text.dart';
-import 'package:cirilla/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:salla/blocs/app_bloc/app_cubit.dart';
+import 'package:salla/models/favourites_model.dart';
+import 'package:salla/models/product_model.dart';
+import 'package:salla/screens/product_screen.dart';
+import 'package:salla/shared/styles/text.dart';
+import 'package:salla/widgets/widgets.dart';
 
 /// Re-usable widget for creating grid for products
 /// takes a [List] of [Product]

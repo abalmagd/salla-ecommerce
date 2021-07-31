@@ -1,13 +1,13 @@
-import 'package:cirilla/blocs/app_bloc/app_cubit.dart';
-import 'package:cirilla/blocs/app_bloc/app_states.dart';
-import 'package:cirilla/layout/search_layout.dart';
-import 'package:cirilla/screens/categories_screen.dart';
-import 'package:cirilla/screens/favorites_screen.dart';
-import 'package:cirilla/screens/home_screen.dart';
-import 'package:cirilla/screens/profile_screen.dart';
-import 'package:cirilla/shared/styles/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salla/blocs/app_bloc/app_cubit.dart';
+import 'package:salla/blocs/app_bloc/app_states.dart';
+import 'package:salla/layout/search_layout.dart';
+import 'package:salla/screens/categories_screen.dart';
+import 'package:salla/screens/favorites_screen.dart';
+import 'package:salla/screens/home_screen.dart';
+import 'package:salla/screens/profile_screen.dart';
+import 'package:salla/shared/styles/text.dart';
 
 class AppLayout extends StatelessWidget {
   final List<Widget> _screens = [
@@ -16,6 +16,7 @@ class AppLayout extends StatelessWidget {
     FavoritesScreen(),
     ProfileScreen(),
   ];
+
 //
   @override
   Widget build(BuildContext context) {

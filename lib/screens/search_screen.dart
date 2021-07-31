@@ -1,5 +1,5 @@
-import 'package:cirilla/blocs/app_bloc/app_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:salla/blocs/app_bloc/app_cubit.dart';
 
 class SearchScreen extends StatelessWidget {
   final Function fn;
