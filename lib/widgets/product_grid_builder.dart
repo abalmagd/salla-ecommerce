@@ -17,7 +17,8 @@ class GridBuilder extends StatelessWidget {
 
   const GridBuilder({
     this.products,
-    this.favorites, this.shrinkWrap = true,
+    this.favorites,
+    this.shrinkWrap = true,
   });
 
   @override

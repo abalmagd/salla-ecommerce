@@ -11,13 +11,13 @@ class ProductScreen extends StatelessWidget {
   final Product product;
 
   const ProductScreen({
-    Key key,
     @required this.product,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    AppCubit.get(context).changeProductViewedImage(image: product.image);
+    AppCubit cubit = AppCubit.get(context);
+    cubit.changeProductViewedImage(image: product.image);
     return BlocConsumer<AppCubit, AppStates>(
       listener: (context, state) {},
       builder: (context, state) {
@@ -43,7 +43,7 @@ class ProductScreen extends StatelessWidget {
                     child: CachedNetworkImage(
                       width: double.infinity,
                       height: 300,
-                      imageUrl: AppCubit.get(context).productImage,
+                      imageUrl: cubit.productImage,
                     ),
                   ),
                 ),
@@ -57,7 +57,7 @@ class ProductScreen extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) => GestureDetector(
                         onTap: () {
-                          AppCubit.get(context).changeProductViewedImage(image: product.images[index]);
+                          cubit.changeProductViewedImage(image: product.images[index]);
                         },
                         child: Container(
                           child: Image(image: NetworkImage(product.images[index])),
@@ -84,8 +84,8 @@ class ProductScreen extends StatelessWidget {
                       ),
                     ),
                     FavoriteButton(
-                      onPressed: () => AppCubit.get(context).changeFavorite(product.id),
-                      isLiked: AppCubit.get(context).favoriteList[product.id],
+                      onPressed: () => cubit.changeFavorite(product.id),
+                      isLiked: cubit.favoriteList[product.id],
                     ),
                   ],
                 ),
