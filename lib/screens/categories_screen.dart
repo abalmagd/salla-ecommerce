@@ -8,21 +8,21 @@ import 'package:salla/models/category_model.dart';
 class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<CategoryItem> categories = AppCubit.get(context).categories.data.data;
+    AppCubit cubit = AppCubit.get(context);
+    List<CategoryItem> categories = cubit.categories.data.data;
     return ConditionalBuilder(
-      condition: AppCubit.get(context).categories != null,
+      condition: cubit.categories != null,
       builder: (context) => Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView.separated(
           itemBuilder: (context, index) => ListTile(
             onTap: () {
-              AppCubit.get(context).dbInit();
-              AppCubit.get(context).getSearch(categories[index].name);
+              cubit.dbInit();
+              cubit.getSearch(categories[index].name);
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          SearchLayout(
+                      builder: (context) => SearchLayout(
                             query: categories[index].name,
                           )));
             },

@@ -17,7 +17,6 @@ class AppLayout extends StatelessWidget {
     ProfileScreen(),
   ];
 
-//
   @override
   Widget build(BuildContext context) {
     AppCubit cubit = AppCubit.get(context);

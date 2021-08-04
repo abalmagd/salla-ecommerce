@@ -13,11 +13,10 @@ class ListBuilder extends StatelessWidget {
   final bool shrinkWrap;
 
   const ListBuilder({
-    Key key,
     this.products,
     this.shrinkWrap = false,
     this.favorites,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
