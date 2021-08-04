@@ -13,7 +13,7 @@ class ProductScreen extends StatelessWidget {
   const ProductScreen({
     Key key,
     @required this.product,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,101 +23,101 @@ class ProductScreen extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            centerTitle: true,
             title: Text(
               product.name,
               overflow: TextOverflow.ellipsis,
               style: TextThemes.normalText(context),
             ),
           ),
-          body: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                InteractiveViewer(
-                  minScale: 0.5,
-                  maxScale: 2.0,
-                  child: Container(
-                    color: Colors.white,
-                    child: CachedNetworkImage(
-                      width: double.infinity,
-                      height: 300,
-                      imageUrl: AppCubit.get(context).productImage,
-                    ),
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              InteractiveViewer(
+                minScale: 0.5,
+                maxScale: 2.0,
+                child: Container(
+                  color: Colors.white,
+                  child: CachedNetworkImage(
+                    width: double.infinity,
+                    height: 300,
+                    imageUrl: AppCubit.get(context).productImage,
                   ),
                 ),
-                SizedBox(height: 8.0),
-                Center(
-                  child: Container(
-                    height: 75,
-                    width: product.images.length * 75.0,
-                    child: ListView.builder(
-                      padding: EdgeInsets.symmetric(horizontal: 16.0),
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => GestureDetector(
-                        onTap: () {
-                          AppCubit.get(context).changeProductViewedImage(image: product.images[index]);
-                        },
-                        child: Container(
-                          child: Image(image: NetworkImage(product.images[index])),
-                          width: 75,
-                          height: 75,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                            color: Colors.blue,
-                          )),
-                        ),
+              ),
+              SizedBox(height: 8.0),
+              Center(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  height: 75,
+                  width: product.images.length * 75.0,
+                  // color: Colors.white,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) => GestureDetector(
+                      onTap: () {
+                        AppCubit.get(context)
+                            .changeProductViewedImage(image: product.images[index]);
+                      },
+                      child: Container(
+                        child: Image(image: NetworkImage(product.images[index])),
+                        width: 75,
+                        height: 75,
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                          color: Colors.blue,
+                        )),
                       ),
-                      itemCount: product.images.length,
                     ),
+                    itemCount: product.images.length,
                   ),
                 ),
-                SizedBox(height: 8.0),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        product.name,
-                        maxLines: 3,
-                        style: TextThemes.normalText(context),
-                      ),
-                    ),
-                    FavoriteButton(
-                      onPressed: () => AppCubit.get(context).changeFavorite(product.id),
-                      isLiked: AppCubit.get(context).favoriteList[product.id],
-                    ),
-                  ],
-                ),
-                SizedBox(height: 4.0),
-                Row(
-                  children: [
-                    Text(product.price.toString(), style: TextThemes.itemPrice(context)),
-                    SizedBox(width: 5),
-                    Visibility(
-                      visible: product.discount != null && product.discount > 0,
-                      child: Text(
-                        product.oldPrice.toString(),
-                        style: TextThemes.itemOldPrice(context),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 4.0),
-                Text('Description', style: TextThemes.sectionHeader(context).copyWith(fontSize:
-                16),),
-                SizedBox(height: 4.0),
-                Expanded(
-                  child: SingleChildScrollView(
+              ),
+              SizedBox(height: 8.0),
+              Row(
+                children: [
+                  Expanded(
                     child: Text(
-                      product.description,
-                      style: TextThemes.subText(context).copyWith(color: Colors.grey[900],
-                          fontSize: 14),
+                      product.name,
+                      maxLines: 3,
+                      style: TextThemes.normalText(context),
                     ),
                   ),
+                  FavoriteButton(
+                    onPressed: () => AppCubit.get(context).changeFavorite(product.id),
+                    isLiked: AppCubit.get(context).favoriteList[product.id],
+                  ),
+                ],
+              ),
+              SizedBox(height: 4.0),
+              Row(
+                children: [
+                  Text(product.price.toString(), style: TextThemes.itemPrice(context)),
+                  SizedBox(width: 5),
+                  Visibility(
+                    visible: product.discount != null && product.discount > 0,
+                    child: Text(
+                      product.oldPrice.toString(),
+                      style: TextThemes.itemOldPrice(context),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 4.0),
+              Text(
+                'Description',
+                style: TextThemes.sectionHeader(context).copyWith(fontSize: 16),
+              ),
+              SizedBox(height: 4.0),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    product.description,
+                    style:
+                        TextThemes.subText(context).copyWith(color: Colors.grey[900], fontSize: 14),
+                  ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       },

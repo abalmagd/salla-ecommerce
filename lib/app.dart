@@ -24,7 +24,7 @@ class App extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: lightTheme(context),
+        theme: darkTheme(context),
         darkTheme: darkTheme(context),
         home: CacheHelper.isLogged() ? AppLayout() : OnBoardingScreen(),
       ),

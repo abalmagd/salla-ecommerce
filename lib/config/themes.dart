@@ -24,8 +24,12 @@ ThemeData lightTheme(BuildContext context) {
 // TODO: Fix this later when theme switch is added
 ThemeData darkTheme(BuildContext context) {
   return ThemeData(
-    scaffoldBackgroundColor: Color(0xff262623),
+    scaffoldBackgroundColor: Color(0xff121212),
     primaryColor: Colors.blue,
+    accentColor: Colors.white,
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: Colors.grey[850],
+    ),
     backgroundColor: Color(0xff262623),
     appBarTheme: AppBarTheme(
       backwardsCompatibility: true,

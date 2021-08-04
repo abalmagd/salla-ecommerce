@@ -24,10 +24,90 @@ class AppLayout extends StatelessWidget {
     return BlocConsumer<AppCubit, AppStates>(
       listener: (BuildContext context, state) {},
       builder: (BuildContext context, state) => Scaffold(
-        backgroundColor: cubit.bottomNavIndex == 0
-            ? Colors.grey[300]
-            : Theme.of(context).scaffoldBackgroundColor,
-        drawer: Drawer(),
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              DrawerHeader(
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                    cubit.changeBottomNavIndex(3);
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(width: 1, color: Colors.blue),
+                        ),
+                        child: CircleAvatar(
+                          radius: 40,
+                          backgroundImage: NetworkImage(cubit.user.data.image),
+                        ),
+                      ),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(cubit.user.data.name),
+                            Text(cubit.user.data.email),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.pop(context);
+                  cubit.changeBottomNavIndex(0);
+                },
+                title: Text('Home'),
+                leading: Icon(
+                  Icons.home_outlined,
+                  color: Theme.of(context).accentColor,
+                ),
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.pop(context);
+                  cubit.changeBottomNavIndex(1);
+                },
+                title: Text('Categories'),
+                leading: Icon(
+                  Icons.apps,
+                  color: Theme.of(context).accentColor,
+                ),
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.pop(context);
+                  cubit.changeBottomNavIndex(2);
+                },
+                title: Text('Favorites'),
+                leading: Stack(
+                  alignment: Alignment.topRight,
+                  children: [
+                    Icon(
+                      Icons.favorite_border_outlined,
+                      color: Theme.of(context).accentColor,
+                    ),
+                    Visibility(
+                      visible: cubit.favoriteList.values.contains(true),
+                      /*cubit
+                      .favorites.data.data.length >= 1,*/
+                      child: CircleAvatar(
+                        backgroundColor: Colors.red,
+                        radius: 4,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
         appBar: AppBar(
           title: Text(
             'Salla',
