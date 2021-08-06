@@ -24,7 +24,7 @@ class AppLayout extends StatelessWidget {
       listener: (BuildContext context, state) {},
       builder: (BuildContext context, state) => Scaffold(
         drawer: Drawer(
-          child: ListView(
+          child: Column(
             children: [
               DrawerHeader(
                 child: InkWell(
@@ -104,6 +104,10 @@ class AppLayout extends StatelessWidget {
                   ],
                 ),
               ),
+              Spacer(),
+              Text(
+                '@C Salla',
+              )
             ],
           ),
         ),

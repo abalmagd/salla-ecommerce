@@ -25,7 +25,7 @@ class GridBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.count(
       padding: EdgeInsets.all(8.0),
-      childAspectRatio: 1.0 / 1.4,
+      childAspectRatio: 1.0 / 1.1,
       shrinkWrap: shrinkWrap,
       physics: shrinkWrap ? NeverScrollableScrollPhysics() : null,
       crossAxisCount: 2,
@@ -57,55 +57,42 @@ class GridItemBuilder extends StatelessWidget {
           ),
         ),
       ),
-      child: Container(
-        padding: EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey,
-              offset: Offset(0.0, 0.0), //(x,y)
-              blurRadius: 2.0,
-            ),
-          ],
-        ),
+      child: Card(
+        clipBehavior: Clip.antiAlias,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  CachedNetworkImage(
+            Stack(
+              children: [
+                Container(
+                  height: 150,
+                  color: Colors.white,
+                  child: CachedNetworkImage(
                     imageUrl: product.image,
                     width: double.infinity,
                     height: 150,
                   ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: FavoriteButton(
-                      isLiked: AppCubit.get(context).favoriteList[product.id],
-                      onPressed: () => AppCubit.get(context).changeFavorite(product.id),
-                    ),
+                ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: FavoriteButton(
+                    isLiked: AppCubit.get(context).favoriteList[product.id],
+                    onPressed: () => AppCubit.get(context).changeFavorite(product.id),
                   ),
-                  if (product.discount != null && product.discount > 0)
-                    Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Container(
-                        padding: EdgeInsets.all(2),
-                        color: Colors.red,
-                        child: Text(
-                          'DISCOUNT',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
-                        ),
+                ),
+                if (product.discount != null && product.discount > 0)
+                  Container(
+                    padding: EdgeInsets.all(2),
+                    color: Colors.red,
+                    child: Text(
+                      'DISCOUNT',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
                       ),
                     ),
-                ],
-              ),
+                  ),
+              ],
             ),
             Text(
               product.name,
