@@ -19,7 +19,7 @@ class FavoriteButton extends StatelessWidget {
         splashRadius: 15,
         iconSize: 17,
         icon: Icon(isLiked ? Icons.favorite : Icons.favorite_border),
-        color: isLiked ? Colors.red : Colors.black,
+        color: Colors.red,
         onPressed: onPressed,
       ),
     );

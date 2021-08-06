@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salla/blocs/app_bloc/app_cubit.dart';
 import 'package:salla/blocs/app_bloc/app_states.dart';
 import 'package:salla/layout/search_layout.dart';
-import 'package:salla/shared/styles/text.dart';
 import 'package:salla/widgets/product_list_builder.dart';
 import 'package:salla/widgets/widgets.dart';
 
@@ -47,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text(
                       'Categories',
-                      style: TextThemes.sectionHeader(context),
+                      style: Theme.of(context).textTheme.headline5,
                     ),
                   ),
                   Spacer(),
@@ -77,6 +76,7 @@ class HomeScreen extends StatelessWidget {
                     },
                     child: Card(
                       clipBehavior: Clip.antiAlias,
+                      color: Colors.white,
                       elevation: 2,
                       child: Stack(
                         alignment: Alignment.bottomCenter,
@@ -92,7 +92,7 @@ class HomeScreen extends StatelessWidget {
                             child: Text(
                               cubit.categories.data.data[index].name,
                               textAlign: TextAlign.center,
-                              style: TextThemes.subText(context),
+                              style: Theme.of(context).textTheme.bodyText1,
                             ),
                           ),
                         ],
@@ -109,7 +109,7 @@ class HomeScreen extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text(
                       'Products',
-                      style: TextThemes.sectionHeader(context),
+                      style: Theme.of(context).textTheme.headline5,
                     ),
                   ),
                   Spacer(),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:salla/shared/constants.dart';
-import 'package:salla/shared/styles/text.dart';
 
 class NoDataScreen extends StatelessWidget {
   const NoDataScreen({Key key}) : super(key: key);
@@ -20,9 +19,7 @@ class NoDataScreen extends StatelessWidget {
           SizedBox(height: 18.0),
           Text(
             'It is empty here',
-            style: TextThemes.formTitle(context).copyWith(
-              fontSize: 18,
-            ),
+            style: Theme.of(context).textTheme.subtitle2,
           ),
         ],
       ),

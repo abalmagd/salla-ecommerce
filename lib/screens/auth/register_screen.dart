@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salla/blocs/auth_bloc/auth_cubit.dart';
 import 'package:salla/blocs/auth_bloc/auth_states.dart';
 import 'package:salla/layout/app_layout.dart';
-import 'package:salla/shared/styles/text.dart';
 import 'package:salla/widgets/button.dart';
 import 'package:salla/widgets/input_form_field.dart';
 
@@ -32,11 +31,11 @@ class RegisterScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Register',
-                    style: TextThemes.formTitle(context),
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                   Text(
                     'Register now to browse our hot offers',
-                    style: TextThemes.normalText(context),
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                   SizedBox(height: 10),
                   InputFormField(
@@ -94,14 +93,14 @@ class RegisterScreen extends StatelessWidget {
                     children: [
                       Text(
                         'Already have an account?',
-                        style: TextThemes.normalText(context),
+                        style: Theme.of(context).textTheme.bodyText2,
                       ),
                       TextButton(
                         onPressed: () => Navigator.pushReplacement(
                             context, MaterialPageRoute(builder: (context) => LoginScreen())),
                         child: Text(
                           'Login!',
-                          style: TextThemes.normalText(context),
+                          style: Theme.of(context).textTheme.bodyText2,
                         ),
                       ),
                     ],

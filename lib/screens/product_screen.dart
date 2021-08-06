@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salla/blocs/app_bloc/app_cubit.dart';
 import 'package:salla/blocs/app_bloc/app_states.dart';
 import 'package:salla/models/product_model.dart';
-import 'package:salla/shared/styles/text.dart';
 import 'package:salla/widgets/favorite_button.dart';
 
 class ProductScreen extends StatelessWidget {
@@ -26,7 +25,7 @@ class ProductScreen extends StatelessWidget {
             title: Text(
               product.name,
               overflow: TextOverflow.ellipsis,
-              style: TextThemes.normalText(context),
+              style: Theme.of(context).textTheme.headline6,
             ),
           ),
           body: Column(
@@ -79,7 +78,7 @@ class ProductScreen extends StatelessWidget {
                     child: Text(
                       product.name,
                       maxLines: 3,
-                      style: TextThemes.normalText(context),
+                      style: Theme.of(context).textTheme.bodyText2,
                     ),
                   ),
                   FavoriteButton(
@@ -91,13 +90,16 @@ class ProductScreen extends StatelessWidget {
               SizedBox(height: 4.0),
               Row(
                 children: [
-                  Text(product.price.toString(), style: TextThemes.itemPrice(context)),
+                  Text(
+                    product.price.toString(),
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
                   SizedBox(width: 5),
                   Visibility(
                     visible: product.discount != null && product.discount > 0,
                     child: Text(
                       product.oldPrice.toString(),
-                      style: TextThemes.itemOldPrice(context),
+                      style: Theme.of(context).textTheme.bodyText2,
                     ),
                   ),
                 ],
@@ -105,15 +107,14 @@ class ProductScreen extends StatelessWidget {
               SizedBox(height: 4.0),
               Text(
                 'Description',
-                style: TextThemes.sectionHeader(context).copyWith(fontSize: 16),
+                style: Theme.of(context).textTheme.headline5,
               ),
               SizedBox(height: 4.0),
               Expanded(
                 child: SingleChildScrollView(
                   child: Text(
                     product.description,
-                    style:
-                        TextThemes.subText(context).copyWith(color: Colors.grey[900], fontSize: 14),
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ),
               ),

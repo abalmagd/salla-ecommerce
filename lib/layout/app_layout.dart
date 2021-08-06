@@ -7,7 +7,6 @@ import 'package:salla/screens/categories_screen.dart';
 import 'package:salla/screens/favorites_screen.dart';
 import 'package:salla/screens/home_screen.dart';
 import 'package:salla/screens/profile_screen.dart';
-import 'package:salla/shared/styles/text.dart';
 
 class AppLayout extends StatelessWidget {
   final List<Widget> _screens = [
@@ -24,7 +23,7 @@ class AppLayout extends StatelessWidget {
       listener: (BuildContext context, state) {},
       builder: (BuildContext context, state) => Scaffold(
         drawer: Drawer(
-          child: ListView(
+          child: Column(
             children: [
               DrawerHeader(
                 child: InkWell(
@@ -104,13 +103,17 @@ class AppLayout extends StatelessWidget {
                   ],
                 ),
               ),
+              Spacer(),
+              Text(
+                '@C Salla',
+              )
             ],
           ),
         ),
         appBar: AppBar(
           title: Text(
             'Salla',
-            style: TextThemes.appBarTitle(context),
+            style: Theme.of(context).textTheme.headline6,
           ),
           actions: [
             IconButton(

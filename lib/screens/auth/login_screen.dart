@@ -4,7 +4,6 @@ import 'package:salla/blocs/auth_bloc/auth_cubit.dart';
 import 'package:salla/blocs/auth_bloc/auth_states.dart';
 import 'package:salla/layout/app_layout.dart';
 import 'package:salla/screens/auth/register_screen.dart';
-import 'package:salla/shared/styles/text.dart';
 import 'package:salla/widgets/button.dart';
 import 'package:salla/widgets/widgets.dart';
 
@@ -29,11 +28,11 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Login',
-                    style: TextThemes.formTitle(context),
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                   Text(
                     'Login now to browse our hot offers',
-                    style: TextThemes.normalText(context),
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                   SizedBox(height: 10),
                   InputFormField(
@@ -73,14 +72,14 @@ class LoginScreen extends StatelessWidget {
                     children: [
                       Text(
                         'Don\'t have an account?',
-                        style: TextThemes.normalText(context),
+                        style: Theme.of(context).textTheme.bodyText2,
                       ),
                       TextButton(
                         onPressed: () => Navigator.pushReplacement(
                             context, MaterialPageRoute(builder: (context) => RegisterScreen())),
                         child: Text(
                           'Register!',
-                          style: TextThemes.normalText(context),
+                          style: Theme.of(context).textTheme.bodyText2,
                         ),
                       ),
                     ],
