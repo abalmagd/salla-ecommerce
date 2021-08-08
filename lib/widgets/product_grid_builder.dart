@@ -82,13 +82,10 @@ class GridItemBuilder extends StatelessWidget {
                 if (product.discount != null && product.discount > 0)
                   Container(
                     padding: EdgeInsets.all(2),
-                    color: Colors.red,
+                    color: Colors.cyan,
                     child: Text(
                       'DISCOUNT',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                      ),
+                      style: Theme.of(context).textTheme.subtitle1,
                     ),
                   ),
               ],
@@ -97,17 +94,22 @@ class GridItemBuilder extends StatelessWidget {
               product.name,
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
-              style: Theme.of(context).textTheme.bodyText2,
+              style: Theme.of(context).textTheme.subtitle1,
             ),
             SizedBox(height: 6.0),
             Row(
               children: [
-                Text(product.price.toString(), style: Theme.of(context).textTheme.bodyText2),
+                Text(product.price.toString(), style: Theme.of(context).textTheme.subtitle2),
                 SizedBox(width: 5),
                 if (product.discount != null && product.discount > 0)
                   Text(
                     product.oldPrice.toString(),
-                    style: Theme.of(context).textTheme.bodyText2,
+                    style: Theme.of(context).textTheme.subtitle2.copyWith(
+                          fontSize: 14.0,
+                          color: Colors.grey,
+                          decoration: TextDecoration.lineThrough,
+                          decorationThickness: 3.0,
+                        ),
                   ),
               ],
             ),
