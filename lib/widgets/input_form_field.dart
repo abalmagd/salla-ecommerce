@@ -23,6 +23,7 @@ class InputFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      cursorColor: Theme.of(context).primaryColor,
       initialValue: value,
       controller: controller,
       keyboardType: type,
@@ -33,9 +34,19 @@ class InputFormField extends StatelessWidget {
         return null;
       },
       decoration: InputDecoration(
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Theme.of(context).primaryColor,
+            width: 2.0,
+          ),
+        ),
+        // focusColor: Theme.of(context).primaryColor,
         border: OutlineInputBorder(),
         labelText: label,
-        prefixIcon: Icon(icon),
+        prefixIcon: Icon(
+          icon,
+          color: Theme.of(context).primaryColor,
+        ),
       ),
     );
   }

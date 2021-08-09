@@ -60,8 +60,13 @@ ThemeData darkTheme(BuildContext context) {
     //   surface: Colors.grey[800],
     // ),
     textTheme: TextTheme(
-      headline1: TextStyle(),
-      headline2: TextStyle(),
+      headline1: TextStyle(
+        color: Colors.cyan,
+      ),
+      // Auth forms headlines
+      headline2: TextStyle(
+        color: Colors.cyan,
+      ),
       headline3: TextStyle(),
       headline4: TextStyle(),
       // Used for section titles (e.g., in [HomeScreen]),
@@ -70,7 +75,7 @@ ThemeData darkTheme(BuildContext context) {
       headline6: TextStyle(),
       bodyText1: TextStyle(),
       bodyText2: TextStyle(),
-      // Used for product names
+      // Used for product names and auth forms subtitles
       subtitle1: TextStyle(),
       // Used for product prices
       subtitle2: TextStyle(

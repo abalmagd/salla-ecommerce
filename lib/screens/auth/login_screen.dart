@@ -28,11 +28,11 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Login',
-                    style: Theme.of(context).textTheme.bodyText2,
+                    style: Theme.of(context).textTheme.headline2,
                   ),
                   Text(
                     'Login now to browse our hot offers',
-                    style: Theme.of(context).textTheme.bodyText2,
+                    style: Theme.of(context).textTheme.subtitle1,
                   ),
                   SizedBox(height: 10),
                   InputFormField(
@@ -72,14 +72,17 @@ class LoginScreen extends StatelessWidget {
                     children: [
                       Text(
                         'Don\'t have an account?',
-                        style: Theme.of(context).textTheme.bodyText2,
+                        style: Theme.of(context).textTheme.subtitle1,
                       ),
                       TextButton(
                         onPressed: () => Navigator.pushReplacement(
                             context, MaterialPageRoute(builder: (context) => RegisterScreen())),
                         child: Text(
                           'Register!',
-                          style: Theme.of(context).textTheme.bodyText2,
+                          style: Theme.of(context).textTheme.subtitle1.copyWith(
+                                color: Theme.of(context).accentColor,
+                                decoration: TextDecoration.underline,
+                              ),
                         ),
                       ),
                     ],

@@ -21,91 +21,98 @@ class RegisterScreen extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) => Scaffold(
         body: SafeArea(
-          child: Form(
-            key: _formKey,
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Register',
-                    style: Theme.of(context).textTheme.bodyText2,
-                  ),
-                  Text(
-                    'Register now to browse our hot offers',
-                    style: Theme.of(context).textTheme.bodyText2,
-                  ),
-                  SizedBox(height: 10),
-                  InputFormField(
-                    controller: nameController,
-                    type: TextInputType.name,
-                    label: 'Name',
-                    validate: '* Name must not be empty',
-                    icon: Icons.person,
-                  ),
-                  SizedBox(height: 10),
-                  InputFormField(
-                    controller: phoneController,
-                    type: TextInputType.phone,
-                    label: 'Phone Number',
-                    validate: '* Phone Number must not be empty',
-                    icon: Icons.email,
-                  ),
-                  SizedBox(height: 10),
-                  InputFormField(
-                    controller: emailController,
-                    type: TextInputType.emailAddress,
-                    label: 'Email Address',
-                    validate: '* Email Address must not be empty',
-                    icon: Icons.email,
-                  ),
-                  SizedBox(height: 10),
-                  InputFormField(
-                    controller: passwordController,
-                    type: TextInputType.visiblePassword,
-                    label: 'Password',
-                    validate: '* Password must not be empty',
-                    icon: Icons.lock,
-                  ),
-                  SizedBox(height: 10),
-                  Visibility(
-                    visible: state is AuthRegisterLoadingState,
-                    child: Center(child: CircularProgressIndicator()),
-                    replacement: DefaultButton(
-                        onPressed: () async {
-                          if (_formKey.currentState.validate()) {
-                            if (await AuthCubit.get(context).register(
-                              name: nameController.text.trim(),
-                              phone: phoneController.text.trim(),
-                              email: emailController.text.trim(),
-                              password: passwordController.text.trim(),
-                            )) {
-                              Navigator.pushReplacement(
-                                  context, MaterialPageRoute(builder: (context) => AppLayout()));
-                            }
-                          }
-                        },
-                        text: 'Register'),
-                  ),
-                  Row(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Form(
+                key: _formKey,
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Already have an account?',
-                        style: Theme.of(context).textTheme.bodyText2,
+                        'Register',
+                        style: Theme.of(context).textTheme.headline2,
                       ),
-                      TextButton(
-                        onPressed: () => Navigator.pushReplacement(
-                            context, MaterialPageRoute(builder: (context) => LoginScreen())),
-                        child: Text(
-                          'Login!',
-                          style: Theme.of(context).textTheme.bodyText2,
-                        ),
+                      Text(
+                        'Register now to browse our hot offers',
+                        style: Theme.of(context).textTheme.subtitle1,
                       ),
+                      SizedBox(height: 10),
+                      InputFormField(
+                        controller: nameController,
+                        type: TextInputType.name,
+                        label: 'Name',
+                        validate: '* Name must not be empty',
+                        icon: Icons.person,
+                      ),
+                      SizedBox(height: 10),
+                      InputFormField(
+                        controller: phoneController,
+                        type: TextInputType.phone,
+                        label: 'Phone Number',
+                        validate: '* Phone Number must not be empty',
+                        icon: Icons.email,
+                      ),
+                      SizedBox(height: 10),
+                      InputFormField(
+                        controller: emailController,
+                        type: TextInputType.emailAddress,
+                        label: 'Email Address',
+                        validate: '* Email Address must not be empty',
+                        icon: Icons.email,
+                      ),
+                      SizedBox(height: 10),
+                      InputFormField(
+                        controller: passwordController,
+                        type: TextInputType.visiblePassword,
+                        label: 'Password',
+                        validate: '* Password must not be empty',
+                        icon: Icons.lock,
+                      ),
+                      SizedBox(height: 10),
+                      Visibility(
+                        visible: state is AuthRegisterLoadingState,
+                        child: Center(child: CircularProgressIndicator()),
+                        replacement: DefaultButton(
+                            onPressed: () async {
+                              if (_formKey.currentState.validate()) {
+                                if (await AuthCubit.get(context).register(
+                                  name: nameController.text.trim(),
+                                  phone: phoneController.text.trim(),
+                                  email: emailController.text.trim(),
+                                  password: passwordController.text.trim(),
+                                )) {
+                                  Navigator.pushReplacement(context,
+                                      MaterialPageRoute(builder: (context) => AppLayout()));
+                                }
+                              }
+                            },
+                            text: 'Register'),
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Already have an account?',
+                            style: Theme.of(context).textTheme.subtitle1,
+                          ),
+                          TextButton(
+                            onPressed: () => Navigator.pushReplacement(
+                                context, MaterialPageRoute(builder: (context) => LoginScreen())),
+                            child: Text(
+                              'Login!',
+                              style: Theme.of(context).textTheme.subtitle1.copyWith(
+                                    color: Theme.of(context).accentColor,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      )
                     ],
-                  )
-                ],
+                  ),
+                ),
               ),
             ),
           ),
