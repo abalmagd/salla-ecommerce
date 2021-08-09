@@ -85,33 +85,39 @@ class GridItemBuilder extends StatelessWidget {
                     color: Colors.cyan,
                     child: Text(
                       'DISCOUNT',
-                      style: Theme.of(context).textTheme.subtitle1,
+                      style: Theme.of(context).textTheme.subtitle1.copyWith(fontSize: 14.0),
                     ),
                   ),
               ],
             ),
-            Text(
-              product.name,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
-              style: Theme.of(context).textTheme.subtitle1,
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Text(
+                product.name,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+                style: Theme.of(context).textTheme.subtitle1,
+              ),
             ),
-            SizedBox(height: 6.0),
-            Row(
-              children: [
-                Text(product.price.toString(), style: Theme.of(context).textTheme.subtitle2),
-                SizedBox(width: 5),
-                if (product.discount != null && product.discount > 0)
-                  Text(
-                    product.oldPrice.toString(),
-                    style: Theme.of(context).textTheme.subtitle2.copyWith(
-                          fontSize: 14.0,
-                          color: Colors.grey,
-                          decoration: TextDecoration.lineThrough,
-                          decorationThickness: 3.0,
-                        ),
-                  ),
-              ],
+            Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 4.0, left: 4.0, right: 4.0),
+              child: Row(
+                children: [
+                  Text(product.price.toString(), style: Theme.of(context).textTheme.subtitle2),
+                  SizedBox(width: 5),
+                  if (product.discount != null && product.discount > 0)
+                    Text(
+                      product.oldPrice.toString(),
+                      style: Theme.of(context).textTheme.subtitle2.copyWith(
+                            fontSize: 14.0,
+                            color: Colors.grey,
+                            decoration: TextDecoration.lineThrough,
+                            decorationThickness: 3.0,
+                          ),
+                    ),
+                ],
+              ),
             ),
           ],
         ),

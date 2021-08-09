@@ -57,6 +57,7 @@ class _SearchLayoutState extends State<SearchLayout> {
                   borderRadius: BorderRadius.circular(40),
                 ),
                 child: TextField(
+                  cursorColor: Theme.of(context).primaryColor,
                   focusNode: _node,
                   onChanged: (text) {
                     if (text.isEmpty) {
@@ -74,11 +75,18 @@ class _SearchLayoutState extends State<SearchLayout> {
                   },
                   controller: searchController,
                   decoration: InputDecoration(
+                    focusColor: Theme.of(context).primaryColor,
                     border: InputBorder.none,
                     hintText: 'Search...',
-                    prefixIcon: Icon(Icons.search),
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: Theme.of(context).primaryColor,
+                    ),
                     suffixIcon: IconButton(
-                        icon: Icon(Icons.close, size: 17),
+                        icon: Icon(
+                          Icons.close,
+                          size: 17,
+                        ),
                         onPressed: () {
                           searchController.clear();
                           _node.unfocus();

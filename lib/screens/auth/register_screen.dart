@@ -74,7 +74,10 @@ class RegisterScreen extends StatelessWidget {
                       SizedBox(height: 10),
                       Visibility(
                         visible: state is AuthRegisterLoadingState,
-                        child: Center(child: CircularProgressIndicator()),
+                        child: Center(
+                            child: CircularProgressIndicator(
+                          color: Theme.of(context).primaryColor,
+                        )),
                         replacement: DefaultButton(
                             onPressed: () async {
                               if (_formKey.currentState.validate()) {

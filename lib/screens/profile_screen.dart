@@ -32,9 +32,11 @@ class ProfileScreen extends StatelessWidget {
                       Container(
                         width: 145,
                         decoration: BoxDecoration(
-                          color: Colors.red,
                           shape: BoxShape.circle,
-                          border: Border.all(width: 3, color: Colors.blue),
+                          border: Border.all(
+                            width: 3,
+                            color: Theme.of(context).accentColor,
+                          ),
                         ),
                         child: CircleAvatar(
                           radius: 70,
@@ -71,6 +73,7 @@ class ProfileScreen extends StatelessWidget {
                         child: CircularProgressIndicator(),
                         replacement: DefaultButton(
                           text: 'Change your data',
+                          buttonColor: Colors.cyan,
                           fullWidth: true,
                           onPressed: () {
                             if (_formKey.currentState.validate() &&
@@ -96,7 +99,6 @@ class ProfileScreen extends StatelessWidget {
                       DefaultButton(
                         text: 'Log out',
                         fullWidth: true,
-                        buttonColor: Colors.red,
                         onPressed: () {
                           AppCubit.get(context).logOut().then((value) {
                             if (value)

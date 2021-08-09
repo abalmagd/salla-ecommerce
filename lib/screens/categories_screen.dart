@@ -27,16 +27,20 @@ class CategoriesScreen extends StatelessWidget {
                           )));
             },
             contentPadding: EdgeInsets.all(4.0),
-            leading: CachedNetworkImage(
-              imageUrl: categories[index].image,
-              width: 100,
-              fit: BoxFit.cover,
+            leading: Container(
+              color: Colors.white,
+              child: CachedNetworkImage(
+                imageUrl: categories[index].image,
+                width: 100,
+                height: 150,
+                fit: BoxFit.cover,
+              ),
             ),
             title: Align(
               alignment: Alignment.center,
               child: Text(
                 categories[index].name,
-                style: TextStyle(fontSize: 16.0, color: Colors.black),
+                style: Theme.of(context).textTheme.subtitle1,
               ),
             ),
             trailing: Icon(Icons.arrow_forward),
@@ -45,7 +49,10 @@ class CategoriesScreen extends StatelessWidget {
           itemCount: categories.length,
         ),
       ),
-      fallback: (context) => Center(child: CircularProgressIndicator()),
+      fallback: (context) => Center(
+          child: CircularProgressIndicator(
+        color: Theme.of(context).primaryColor,
+      )),
     );
   }
 }

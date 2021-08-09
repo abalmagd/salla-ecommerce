@@ -29,12 +29,16 @@ class FavoritesScreen extends StatelessWidget {
                       IconButton(
                         onPressed: () => AppCubit.get(context).changeView(runtimeType, false),
                         icon: Icon(Icons.grid_view),
-                        color: AppCubit.get(context).isList[runtimeType] ? Colors.black : Colors.blue,
+                        color: AppCubit.get(context).isList[runtimeType]
+                            ? Colors.grey
+                            : Theme.of(context).primaryColor,
                       ),
                       IconButton(
                         onPressed: () => AppCubit.get(context).changeView(runtimeType, true),
                         icon: Icon(Icons.list),
-                        color: AppCubit.get(context).isList[runtimeType] ? Colors.blue : Colors.black,
+                        color: AppCubit.get(context).isList[runtimeType]
+                            ? Theme.of(context).primaryColor
+                            : Colors.grey,
                       ),
                     ],
                   ),

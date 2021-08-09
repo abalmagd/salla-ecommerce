@@ -51,7 +51,12 @@ class HomeScreen extends StatelessWidget {
                   ),
                   Spacer(),
                   TextButton(
-                    child: Text('Show all'),
+                    child: Text(
+                      'Show all',
+                      style: Theme.of(context).textTheme.subtitle2.copyWith(
+                            color: Theme.of(context).primaryColor,
+                          ),
+                    ),
                     onPressed: () => cubit.changeBottomNavIndex(1),
                   ),
                 ],
@@ -92,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                             child: Text(
                               cubit.categories.data.data[index].name,
                               textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.bodyText1,
+                              style: Theme.of(context).textTheme.subtitle1,
                             ),
                           ),
                         ],
@@ -116,12 +121,12 @@ class HomeScreen extends StatelessWidget {
                   IconButton(
                     onPressed: () => cubit.changeView(runtimeType, false),
                     icon: Icon(Icons.grid_view),
-                    color: cubit.isList[runtimeType] ? Colors.black : Colors.blue,
+                    color: cubit.isList[runtimeType] ? Colors.grey : Theme.of(context).primaryColor,
                   ),
                   IconButton(
                     onPressed: () => cubit.changeView(runtimeType, true),
                     icon: Icon(Icons.list),
-                    color: cubit.isList[runtimeType] ? Colors.blue : Colors.black,
+                    color: cubit.isList[runtimeType] ? Theme.of(context).primaryColor : Colors.grey,
                   ),
                 ],
               ),

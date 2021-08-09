@@ -4,10 +4,10 @@ import 'package:flutter/services.dart';
 ThemeData lightTheme(BuildContext context) {
   return ThemeData(
     primaryColor: Colors.blue,
-    accentColor: Colors.black,
+    accentColor: Colors.white,
     appBarTheme: AppBarTheme(
       backwardsCompatibility: false,
-      titleTextStyle: TextStyle(color: Colors.black),
+      // titleTextStyle: TextStyle(color: Colors.black),
       color: Colors.white,
       iconTheme: IconThemeData(
         color: Colors.black,
@@ -27,22 +27,22 @@ ThemeData darkTheme(BuildContext context) {
     scaffoldBackgroundColor: Colors.grey[850],
     primaryColor: Colors.pink,
     accentColor: Colors.cyan,
-    // cardColor: Colors.grey[800],
+    buttonColor: Colors.pink,
     brightness: Brightness.dark,
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: Colors.grey[850],
-      unselectedItemColor: Colors.grey[800],
-      elevation: 2.0,
-    ),
     backgroundColor: Color(0xff262623),
     appBarTheme: AppBarTheme(
       backwardsCompatibility: true,
       backgroundColor: Color(0xff262623),
       elevation: 0,
       systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark,
       ),
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: Colors.grey[850],
+      unselectedItemColor: Colors.grey,
+      selectedItemColor: Colors.pink,
+      elevation: 2.0,
     ),
     // colorScheme: ColorScheme(
     //   brightness: Brightness.dark,
@@ -74,8 +74,12 @@ ThemeData darkTheme(BuildContext context) {
       // Used for the primary text in app bars and dialogs (e.g., [AppBar.title]).
       headline6: TextStyle(),
       bodyText1: TextStyle(),
-      bodyText2: TextStyle(),
-      // Used for product names and auth forms subtitles
+      // Used for product description
+      bodyText2: TextStyle(
+        // fontSize: 12.0,
+        color: Colors.grey[400],
+      ),
+      // Used for product/category names and auth forms subtitles
       subtitle1: TextStyle(),
       // Used for product prices
       subtitle2: TextStyle(

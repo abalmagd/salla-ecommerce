@@ -36,7 +36,7 @@ class AppLayout extends StatelessWidget {
                       Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(width: 1, color: Colors.blue),
+                          border: Border.all(width: 3, color: Theme.of(context).accentColor),
                         ),
                         child: CircleAvatar(
                           radius: 40,
@@ -64,7 +64,7 @@ class AppLayout extends StatelessWidget {
                 title: Text('Home'),
                 leading: Icon(
                   Icons.home_outlined,
-                  color: Theme.of(context).accentColor,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               ListTile(
@@ -75,7 +75,7 @@ class AppLayout extends StatelessWidget {
                 title: Text('Categories'),
                 leading: Icon(
                   Icons.apps,
-                  color: Theme.of(context).accentColor,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               ListTile(
@@ -89,14 +89,14 @@ class AppLayout extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.favorite_border_outlined,
-                      color: Theme.of(context).accentColor,
+                      color: Theme.of(context).primaryColor,
                     ),
                     Visibility(
                       visible: cubit.favoriteList.values.contains(true),
                       /*cubit
                       .favorites.data.data.length >= 1,*/
                       child: CircleAvatar(
-                        backgroundColor: Colors.red,
+                        backgroundColor: Theme.of(context).accentColor,
                         radius: 4,
                       ),
                     ),
@@ -130,8 +130,7 @@ class AppLayout extends StatelessWidget {
           type: BottomNavigationBarType.fixed,
           currentIndex: cubit.bottomNavIndex,
           onTap: (index) => cubit.changeBottomNavIndex(index),
-          unselectedItemColor: Theme.of(context).accentColor,
-          selectedItemColor: Theme.of(context).primaryColor,
+          // unselectedItemColor: Theme.of(context).accentColor,
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined),
@@ -148,10 +147,8 @@ class AppLayout extends StatelessWidget {
                   Icon(Icons.favorite_border_outlined),
                   Visibility(
                     visible: cubit.favoriteList.values.contains(true),
-                    /*cubit
-                      .favorites.data.data.length >= 1,*/
                     child: CircleAvatar(
-                      backgroundColor: Colors.red,
+                      backgroundColor: Theme.of(context).accentColor,
                       radius: 4,
                     ),
                   ),
