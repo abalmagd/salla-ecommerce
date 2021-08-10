@@ -5,7 +5,7 @@ ThemeData lightTheme(BuildContext context) {
   return ThemeData(
     scaffoldBackgroundColor: Colors.grey[200],
     primaryColor: Colors.blue,
-    accentColor: Colors.teal,
+    accentColor: Colors.green,
     buttonColor: Colors.blue,
     brightness: Brightness.light,
     appBarTheme: AppBarTheme(
