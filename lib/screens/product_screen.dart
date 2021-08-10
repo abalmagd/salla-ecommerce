@@ -36,20 +36,20 @@ class ProductScreen extends StatelessWidget {
                 maxScale: 2.0,
                 child: Container(
                   color: Colors.white,
+                  width: double.infinity,
                   child: CachedNetworkImage(
-                    width: double.infinity,
                     height: 300,
                     imageUrl: AppCubit.get(context).productImage,
                   ),
                 ),
               ),
-              SizedBox(height: 8.0),
+              SizedBox(height: 10.0),
               Center(
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  margin: EdgeInsets.symmetric(horizontal: 8.0),
+                  color: Colors.blue,
                   height: 75,
                   width: product.images.length * 75.0,
-                  // color: Colors.white,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) => GestureDetector(
@@ -60,61 +60,74 @@ class ProductScreen extends StatelessWidget {
                       child: Container(
                         child: Image(image: NetworkImage(product.images[index])),
                         width: 75,
-                        height: 75,
                         decoration: BoxDecoration(
+                            color: Colors.white,
                             border: Border.all(
-                          color: Colors.blue,
-                        )),
+                              color: Theme.of(context).primaryColor,
+                            )),
                       ),
                     ),
                     itemCount: product.images.length,
                   ),
                 ),
               ),
-              SizedBox(height: 8.0),
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      product.name,
-                      maxLines: 3,
-                      style: Theme.of(context).textTheme.bodyText2,
-                    ),
-                  ),
-                  FavoriteButton(
-                    onPressed: () => AppCubit.get(context).changeFavorite(product.id),
-                    isLiked: AppCubit.get(context).favoriteList[product.id],
-                  ),
-                ],
-              ),
-              SizedBox(height: 4.0),
-              Row(
-                children: [
-                  Text(
-                    product.price.toString(),
-                    style: Theme.of(context).textTheme.bodyText2,
-                  ),
-                  SizedBox(width: 5),
-                  Visibility(
-                    visible: product.discount != null && product.discount > 0,
-                    child: Text(
-                      product.oldPrice.toString(),
-                      style: Theme.of(context).textTheme.bodyText2,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 4.0),
-              Text(
-                'Description',
-                style: Theme.of(context).textTheme.headline5,
-              ),
-              SizedBox(height: 4.0),
+              SizedBox(height: 10.0),
               Expanded(
-                child: SingleChildScrollView(
-                  child: Text(
-                    product.description,
-                    style: Theme.of(context).textTheme.bodyText1,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              product.name,
+                              maxLines: 3,
+                              style: Theme.of(context).textTheme.headline6,
+                            ),
+                          ),
+                          FavoriteButton(
+                            onPressed: () => AppCubit.get(context).changeFavorite(product.id),
+                            isLiked: AppCubit.get(context).favoriteList[product.id],
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 4.0),
+                      Row(
+                        children: [
+                          Text(
+                            product.price.toString(),
+                            style: Theme.of(context).textTheme.subtitle2.copyWith(fontSize: 18.0),
+                          ),
+                          SizedBox(width: 5),
+                          Visibility(
+                            visible: product.discount != null && product.discount > 0,
+                            child: Text(
+                              product.oldPrice.toString(),
+                              style: Theme.of(context).textTheme.bodyText2,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 4.0),
+                      Text(
+                        'Description',
+                        style: Theme.of(context).textTheme.headline6.copyWith(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 20.0,
+                            ),
+                      ),
+                      SizedBox(height: 4.0),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Text(
+                            product.description,
+                            style: Theme.of(context).textTheme.bodyText2,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),

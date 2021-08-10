@@ -26,6 +26,7 @@ class AppCubit extends Cubit<AppStates> {
 
   int bottomNavIndex = 0;
   bool isSearching = false;
+  bool darkTheme = CacheHelper.getData(key: 'theme') ?? false;
   Search searchResults;
   List<Map> searchHistory = [];
   String productImage;
@@ -42,6 +43,12 @@ class AppCubit extends Cubit<AppStates> {
   void changeBottomNavIndex(int index) {
     bottomNavIndex = index;
     emit(AppBottomNavChangedState());
+  }
+
+  void changeTheme() {
+    darkTheme = !darkTheme;
+    CacheHelper.setData(key: 'theme', value: darkTheme);
+    emit(AppChangeThemeState());
   }
 
   void changeView(Type widget, bool list) {

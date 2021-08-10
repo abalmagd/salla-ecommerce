@@ -25,7 +25,7 @@ class SearchScreen extends StatelessWidget {
               TextButton(
                 child: Text(
                   'Clear All',
-                  style: TextStyle(fontSize: 16.0),
+                  style: Theme.of(context).textTheme.subtitle2,
                 ),
                 onPressed: () {
                   AppCubit.get(context).dbClear();
@@ -100,7 +100,7 @@ class HistoryBuilder extends StatelessWidget {
             ),
           ),
           IconButton(
-            icon: Icon(Icons.close, color: Colors.grey[200]),
+            icon: Icon(Icons.close, color: Theme.of(context).primaryColor),
             onPressed: buttonOnPressed,
             splashRadius: 20,
           ),

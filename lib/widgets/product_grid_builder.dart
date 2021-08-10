@@ -85,7 +85,10 @@ class GridItemBuilder extends StatelessWidget {
                     color: Colors.cyan,
                     child: Text(
                       'DISCOUNT',
-                      style: Theme.of(context).textTheme.subtitle1.copyWith(fontSize: 14.0),
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle1
+                          .copyWith(fontSize: 14.0, color: Colors.white),
                     ),
                   ),
               ],

@@ -97,7 +97,10 @@ class HomeScreen extends StatelessWidget {
                             child: Text(
                               cubit.categories.data.data[index].name,
                               textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.subtitle1,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle1
+                                  .copyWith(color: Colors.white),
                             ),
                           ),
                         ],
@@ -143,7 +146,11 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-        fallback: (context) => Center(child: CircularProgressIndicator()),
+        fallback: (context) => Center(
+          child: CircularProgressIndicator(
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
       ),
     );
   }

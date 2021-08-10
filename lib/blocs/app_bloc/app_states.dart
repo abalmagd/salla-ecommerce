@@ -8,6 +8,8 @@ class AppChangeViewState extends AppStates {}
 
 class AppProductViewImageChangedState extends AppStates {}
 
+class AppChangeThemeState extends AppStates {}
+
 //<editor-fold desc="Getting Data">
 // Home
 class AppGetHomeDataLoadingState extends AppStates {}

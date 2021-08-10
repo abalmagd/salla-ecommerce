@@ -103,6 +103,17 @@ class AppLayout extends StatelessWidget {
                   ],
                 ),
               ),
+              ListTile(
+                title: Text('Theme Mode'),
+                leading: cubit.darkTheme
+                    ? Icon(Icons.dark_mode, color: Colors.white)
+                    : Icon(Icons.dark_mode, color: Colors.black),
+                trailing: Switch(
+                  value: cubit.darkTheme,
+                  onChanged: (_) => cubit.changeTheme(),
+                  activeColor: Theme.of(context).primaryColor,
+                ),
+              ),
               Spacer(),
               Text(
                 '@C Salla',
