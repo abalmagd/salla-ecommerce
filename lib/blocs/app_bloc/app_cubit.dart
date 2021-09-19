@@ -48,6 +48,7 @@ class AppCubit extends Cubit<AppStates> {
   void changeTheme() {
     darkTheme = !darkTheme;
     CacheHelper.setData(key: 'theme', value: darkTheme);
+    debugPrint(darkTheme.toString());
     emit(AppChangeThemeState());
   }
 

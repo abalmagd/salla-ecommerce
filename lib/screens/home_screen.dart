@@ -97,6 +97,8 @@ class HomeScreen extends StatelessWidget {
                             child: Text(
                               cubit.categories.data.data[index].name,
                               textAlign: TextAlign.center,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                               style: Theme.of(context)
                                   .textTheme
                                   .subtitle1

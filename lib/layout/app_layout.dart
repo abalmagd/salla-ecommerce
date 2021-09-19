@@ -18,83 +18,152 @@ class AppLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AppCubit cubit = AppCubit.get(context);
     return BlocConsumer<AppCubit, AppStates>(
       listener: (BuildContext context, state) {},
-      builder: (BuildContext context, state) => Scaffold(
-        drawer: Drawer(
-          child: Column(
-            children: [
-              DrawerHeader(
-                child: InkWell(
+      builder: (BuildContext context, state) {
+        AppCubit cubit = AppCubit.get(context);
+        return Scaffold(
+          drawer: Drawer(
+            child: Column(
+              children: [
+                DrawerHeader(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                      cubit.changeBottomNavIndex(3);
+                    },
+                    child: Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                                width: 3, color: Theme.of(context).accentColor),
+                          ),
+                          child: CircleAvatar(
+                            radius: 40,
+                            backgroundImage:
+                                NetworkImage(cubit.user.data.image),
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(cubit.user.data.name),
+                              Text(cubit.user.data.email),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                ListTile(
                   onTap: () {
                     Navigator.pop(context);
-                    cubit.changeBottomNavIndex(3);
+                    cubit.changeBottomNavIndex(0);
                   },
-                  child: Row(
+                  title: Text('Home'),
+                  leading: Icon(
+                    Icons.home_outlined,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+                ListTile(
+                  onTap: () {
+                    Navigator.pop(context);
+                    cubit.changeBottomNavIndex(1);
+                  },
+                  title: Text('Categories'),
+                  leading: Icon(
+                    Icons.apps,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+                ListTile(
+                  onTap: () {
+                    Navigator.pop(context);
+                    cubit.changeBottomNavIndex(2);
+                  },
+                  title: Text('Favorites'),
+                  leading: Stack(
+                    alignment: Alignment.topRight,
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(width: 3, color: Theme.of(context).accentColor),
-                        ),
-                        child: CircleAvatar(
-                          radius: 40,
-                          backgroundImage: NetworkImage(cubit.user.data.image),
-                        ),
+                      Icon(
+                        Icons.favorite_border_outlined,
+                        color: Theme.of(context).primaryColor,
                       ),
-                      Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(cubit.user.data.name),
-                            Text(cubit.user.data.email),
-                          ],
+                      Visibility(
+                        visible: cubit.favoriteList.values.contains(true),
+                        /*cubit
+                      .favorites.data.data.length >= 1,*/
+                        child: CircleAvatar(
+                          backgroundColor: Theme.of(context).accentColor,
+                          radius: 4,
                         ),
                       ),
                     ],
                   ),
                 ),
-              ),
-              ListTile(
-                onTap: () {
-                  Navigator.pop(context);
-                  cubit.changeBottomNavIndex(0);
-                },
-                title: Text('Home'),
-                leading: Icon(
-                  Icons.home_outlined,
-                  color: Theme.of(context).primaryColor,
+                ListTile(
+                  title: Text('Theme Mode'),
+                  leading: cubit.darkTheme
+                      ? Icon(Icons.dark_mode, color: Colors.white)
+                      : Icon(Icons.dark_mode, color: Colors.black),
+                  trailing: Switch(
+                    value: cubit.darkTheme,
+                    onChanged: (_) => cubit.changeTheme(),
+                    activeColor: Theme.of(context).primaryColor,
+                  ),
                 ),
+                Spacer(),
+                Text(
+                  '@C Salla',
+                )
+              ],
+            ),
+          ),
+          appBar: AppBar(
+            title: Text(
+              'Salla',
+              style: Theme.of(context).textTheme.headline6,
+            ),
+            actions: [
+              IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {
+                    cubit.emit(SearchScreenState());
+                    cubit.dbInit();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SearchLayout()));
+                  }),
+            ],
+          ),
+          body: _screens[cubit.bottomNavIndex],
+          bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            currentIndex: cubit.bottomNavIndex,
+            onTap: (index) => cubit.changeBottomNavIndex(index),
+            // unselectedItemColor: Theme.of(context).accentColor,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home_outlined),
+                label: 'Home',
               ),
-              ListTile(
-                onTap: () {
-                  Navigator.pop(context);
-                  cubit.changeBottomNavIndex(1);
-                },
-                title: Text('Categories'),
-                leading: Icon(
-                  Icons.apps,
-                  color: Theme.of(context).primaryColor,
-                ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.apps),
+                label: 'Categories',
               ),
-              ListTile(
-                onTap: () {
-                  Navigator.pop(context);
-                  cubit.changeBottomNavIndex(2);
-                },
-                title: Text('Favorites'),
-                leading: Stack(
+              BottomNavigationBarItem(
+                icon: Stack(
                   alignment: Alignment.topRight,
                   children: [
-                    Icon(
-                      Icons.favorite_border_outlined,
-                      color: Theme.of(context).primaryColor,
-                    ),
+                    Icon(Icons.favorite_border_outlined),
                     Visibility(
                       visible: cubit.favoriteList.values.contains(true),
-                      /*cubit
-                      .favorites.data.data.length >= 1,*/
                       child: CircleAvatar(
                         backgroundColor: Theme.of(context).accentColor,
                         radius: 4,
@@ -102,78 +171,16 @@ class AppLayout extends StatelessWidget {
                     ),
                   ],
                 ),
+                label: 'Favorites',
               ),
-              ListTile(
-                title: Text('Theme Mode'),
-                leading: cubit.darkTheme
-                    ? Icon(Icons.dark_mode, color: Colors.white)
-                    : Icon(Icons.dark_mode, color: Colors.black),
-                trailing: Switch(
-                  value: cubit.darkTheme,
-                  onChanged: (_) => cubit.changeTheme(),
-                  activeColor: Theme.of(context).primaryColor,
-                ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person_outline),
+                label: 'Me',
               ),
-              Spacer(),
-              Text(
-                '@C Salla',
-              )
             ],
           ),
-        ),
-        appBar: AppBar(
-          title: Text(
-            'Salla',
-            style: Theme.of(context).textTheme.headline6,
-          ),
-          actions: [
-            IconButton(
-                icon: Icon(Icons.search),
-                onPressed: () {
-                  cubit.emit(SearchScreenState());
-                  cubit.dbInit();
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SearchLayout()));
-                }),
-          ],
-        ),
-        body: _screens[cubit.bottomNavIndex],
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          currentIndex: cubit.bottomNavIndex,
-          onTap: (index) => cubit.changeBottomNavIndex(index),
-          // unselectedItemColor: Theme.of(context).accentColor,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.apps),
-              label: 'Categories',
-            ),
-            BottomNavigationBarItem(
-              icon: Stack(
-                alignment: Alignment.topRight,
-                children: [
-                  Icon(Icons.favorite_border_outlined),
-                  Visibility(
-                    visible: cubit.favoriteList.values.contains(true),
-                    child: CircleAvatar(
-                      backgroundColor: Theme.of(context).accentColor,
-                      radius: 4,
-                    ),
-                  ),
-                ],
-              ),
-              label: 'Favorites',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline),
-              label: 'Me',
-            ),
-          ],
-        ),
-      ),
+        );
+      },
     );
   }
 }

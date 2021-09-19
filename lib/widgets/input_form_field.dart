@@ -8,6 +8,7 @@ class InputFormField extends StatelessWidget {
   final String value;
   final Function onChange;
   final String validate;
+  final bool obscureText;
 
   const InputFormField({
     Key key,
@@ -18,6 +19,7 @@ class InputFormField extends StatelessWidget {
     this.value,
     this.onChange,
     this.validate,
+    this.obscureText = false,
   }) : super(key: key);
 
   @override
@@ -28,6 +30,7 @@ class InputFormField extends StatelessWidget {
       controller: controller,
       keyboardType: type,
       onChanged: onChange,
+      obscureText: obscureText,
       validator: (value) {
         if (value.isEmpty) return validate;
 

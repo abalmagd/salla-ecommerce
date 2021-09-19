@@ -24,7 +24,7 @@ class GridBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.count(
       padding: EdgeInsets.all(8.0),
-      childAspectRatio: 1.0 / 1.1,
+      childAspectRatio: 1.0 / 1.3,
       shrinkWrap: shrinkWrap,
       physics: shrinkWrap ? NeverScrollableScrollPhysics() : null,
       crossAxisCount: 2,
@@ -33,7 +33,8 @@ class GridBuilder extends StatelessWidget {
       children: List.generate(
         products == null ? favorites.length : products.length,
         (index) => GridItemBuilder(
-          product: products == null ? favorites[index].product : products[index],
+          product:
+              products == null ? favorites[index].product : products[index],
         ),
       ),
     );
@@ -61,37 +62,39 @@ class GridItemBuilder extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Stack(
-              children: [
-                Container(
-                  height: 150,
-                  color: Colors.white,
-                  child: CachedNetworkImage(
-                    imageUrl: product.image,
-                    width: double.infinity,
-                    height: 150,
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: FavoriteButton(
-                    isLiked: AppCubit.get(context).favoriteList[product.id],
-                    onPressed: () => AppCubit.get(context).changeFavorite(product.id),
-                  ),
-                ),
-                if (product.discount != null && product.discount > 0)
+            Expanded(
+              child: Stack(
+                children: [
                   Container(
-                    padding: EdgeInsets.all(2),
-                    color: Colors.cyan,
-                    child: Text(
-                      'DISCOUNT',
-                      style: Theme.of(context)
-                          .textTheme
-                          .subtitle1
-                          .copyWith(fontSize: 14.0, color: Colors.white),
+                    color: Colors.white,
+                    height: double.infinity,
+                    child: CachedNetworkImage(
+                      imageUrl: product.image,
+                      width: double.infinity,
                     ),
                   ),
-              ],
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: FavoriteButton(
+                      isLiked: AppCubit.get(context).favoriteList[product.id],
+                      onPressed: () =>
+                          AppCubit.get(context).changeFavorite(product.id),
+                    ),
+                  ),
+                  if (product.discount != null && product.discount > 0)
+                    Container(
+                      padding: EdgeInsets.all(2),
+                      color: Colors.cyan,
+                      child: Text(
+                        'DISCOUNT',
+                        style: Theme.of(context)
+                            .textTheme
+                            .subtitle1
+                            .copyWith(fontSize: 14.0, color: Colors.white),
+                      ),
+                    ),
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(4.0),
@@ -102,12 +105,12 @@ class GridItemBuilder extends StatelessWidget {
                 style: Theme.of(context).textTheme.subtitle1,
               ),
             ),
-            Spacer(),
             Padding(
-              padding: const EdgeInsets.only(bottom: 4.0, left: 4.0, right: 4.0),
+              padding: const EdgeInsets.symmetric(horizontal: 4.0),
               child: Row(
                 children: [
-                  Text(product.price.toString(), style: Theme.of(context).textTheme.subtitle2),
+                  Text(product.price.toString(),
+                      style: Theme.of(context).textTheme.subtitle2),
                   SizedBox(width: 5),
                   if (product.discount != null && product.discount > 0)
                     Text(

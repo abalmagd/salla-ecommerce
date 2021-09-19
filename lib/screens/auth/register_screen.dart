@@ -68,6 +68,7 @@ class RegisterScreen extends StatelessWidget {
                         controller: passwordController,
                         type: TextInputType.visiblePassword,
                         label: 'Password',
+                        obscureText: true,
                         validate: '* Password must not be empty',
                         icon: Icons.lock,
                       ),

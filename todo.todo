@@ -1,3 +1,9 @@
 TODO:
-  - Finish building ProductScreen
+  - Fix first install
+  - Fix search
+  - Optimize Code
+  - Implement uploading profile picture
   - Adjust ProfileScreen for the new API end points
+  - Adjust categories
+  - Adjust empty screens widget
+  - Adjust design colors
