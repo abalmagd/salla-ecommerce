@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:salla/shared/local/cache_helper.dart';
+
+ValueNotifier themeNotifier =
+    ValueNotifier(CacheHelper.getData(key: 'theme') ?? false);
 
 ThemeData lightTheme(BuildContext context) {
   return ThemeData(

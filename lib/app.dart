@@ -4,7 +4,6 @@ import 'package:salla/blocs/app_bloc/app_cubit.dart';
 import 'package:salla/screens/auth/login_screen.dart';
 import 'package:salla/shared/local/cache_helper.dart';
 
-import 'blocs/app_bloc/app_states.dart';
 import 'blocs/auth_bloc/auth_cubit.dart';
 import 'config/themes.dart';
 import 'layout/app_layout.dart';
@@ -25,15 +24,15 @@ class App extends StatelessWidget {
             ..getFavorites(),
         ),
       ],
-      child: BlocConsumer<AppCubit, AppStates>(
-        listener: (BuildContext context, state) {},
-        builder: (BuildContext context, state) => MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: AppCubit.get(context).darkTheme
-              ? darkTheme(context)
-              : lightTheme(context),
-          home: CacheHelper.isLogged() ? AppLayout() : LoginScreen(),
-        ),
+      child: ValueListenableBuilder(
+        valueListenable: themeNotifier,
+        builder: (BuildContext context, theme, Widget child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: theme ? darkTheme(context) : lightTheme(context),
+            home: CacheHelper.isLogged() ? AppLayout() : LoginScreen(),
+          );
+        },
       ),
     );
   }

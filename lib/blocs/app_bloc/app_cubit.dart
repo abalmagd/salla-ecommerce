@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salla/config/themes.dart';
 import 'package:salla/models/category_model.dart';
 import 'package:salla/models/favourites_model.dart';
 import 'package:salla/models/home_model.dart';
@@ -47,6 +48,7 @@ class AppCubit extends Cubit<AppStates> {
 
   void changeTheme() {
     darkTheme = !darkTheme;
+    themeNotifier.value = darkTheme;
     CacheHelper.setData(key: 'theme', value: darkTheme);
     debugPrint(darkTheme.toString());
     emit(AppChangeThemeState());
@@ -64,8 +66,8 @@ class AppCubit extends Cubit<AppStates> {
 
   void dbInit() {
     SqfliteHelper.dbInit().then((value) {
-      dbGet();
       emit(AppInitDatabaseSuccessState());
+      dbGet();
     }).catchError((error) {
       debugPrint(error);
       emit(AppInitDatabaseErrorState());
@@ -101,9 +103,9 @@ class AppCubit extends Cubit<AppStates> {
 
   void dbDelete(int id) {
     SqfliteHelper.dbDelete(id).then((value) {
-      dbGet();
-      debugPrint('$value Rows were deleted');
       emit(AppDeleteDatabaseSuccessState());
+      debugPrint('$value Rows were deleted');
+      dbGet();
     }).catchError((error) {
       emit(AppDeleteDatabaseErrorState());
     });

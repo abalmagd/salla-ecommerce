@@ -80,7 +80,7 @@ class GridItemBuilder extends StatelessWidget {
                       onPressed: () =>
                           AppCubit.get(context).changeFavorite(product.id),
                     ),
-                  ),
+                  ), // Like button (top right, irrelevant)
                   if (product.discount != null && product.discount > 0)
                     Container(
                       padding: EdgeInsets.all(2),
@@ -92,7 +92,7 @@ class GridItemBuilder extends StatelessWidget {
                             .subtitle1
                             .copyWith(fontSize: 14.0, color: Colors.white),
                       ),
-                    ),
+                    ), // discount banner (top left, irrelevant)
                 ],
               ),
             ),
@@ -104,7 +104,7 @@ class GridItemBuilder extends StatelessWidget {
                 maxLines: 2,
                 style: Theme.of(context).textTheme.subtitle1,
               ),
-            ),
+            ), // Product name
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 4.0),
               child: Row(
@@ -124,7 +124,7 @@ class GridItemBuilder extends StatelessWidget {
                     ),
                 ],
               ),
-            ),
+            ), // Product prices
           ],
         ),
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salla/blocs/app_bloc/app_cubit.dart';
 import 'package:salla/blocs/app_bloc/app_states.dart';
+import 'package:salla/config/themes.dart';
 import 'package:salla/layout/search_layout.dart';
 import 'package:salla/screens/categories_screen.dart';
 import 'package:salla/screens/favorites_screen.dart';
@@ -106,16 +107,21 @@ class AppLayout extends StatelessWidget {
                     ],
                   ),
                 ),
-                ListTile(
-                  title: Text('Theme Mode'),
-                  leading: cubit.darkTheme
-                      ? Icon(Icons.dark_mode, color: Colors.white)
-                      : Icon(Icons.dark_mode, color: Colors.black),
-                  trailing: Switch(
-                    value: cubit.darkTheme,
-                    onChanged: (_) => cubit.changeTheme(),
-                    activeColor: Theme.of(context).primaryColor,
-                  ),
+                ValueListenableBuilder(
+                  valueListenable: themeNotifier,
+                  builder: (BuildContext context, theme, Widget child) {
+                    return ListTile(
+                      title: Text('Theme Mode'),
+                      leading: theme
+                          ? Icon(Icons.dark_mode, color: Colors.white)
+                          : Icon(Icons.dark_mode, color: Colors.black),
+                      trailing: Switch(
+                        value: theme,
+                        onChanged: (_) => cubit.changeTheme(),
+                        activeColor: Theme.of(context).primaryColor,
+                      ),
+                    );
+                  },
                 ),
                 Spacer(),
                 Text(

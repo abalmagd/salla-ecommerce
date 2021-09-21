@@ -44,33 +44,34 @@ class ProductScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10.0),
-              Center(
-                child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 8.0),
-                  color: Colors.blue,
-                  height: 75,
-                  width: product.images.length * 75.0,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => GestureDetector(
-                      onTap: () {
-                        AppCubit.get(context)
-                            .changeProductViewedImage(image: product.images[index]);
-                      },
-                      child: Container(
-                        child: Image(image: NetworkImage(product.images[index])),
-                        width: 75,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(
-                              color: Theme.of(context).primaryColor,
-                            )),
-                      ),
+              if (product.images != null)
+                Center(
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 8.0),
+                    color: Colors.blue,
+                    height: 75,
+                    width: product.images.length * 75.0,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) => GestureDetector(
+                        onTap: () {
+                          AppCubit.get(context)
+                                  .changeProductViewedImage(image: product.images[index]);
+                            },
+                            child: Container(
+                              child: Image(image: NetworkImage(product.images[index])),
+                              width: 75,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  border: Border.all(
+                                    color: Theme.of(context).primaryColor,
+                                  )),
+                            ),
+                          ),
+                      itemCount: product.images.length,
                     ),
-                    itemCount: product.images.length,
                   ),
                 ),
-              ),
               SizedBox(height: 10.0),
               Expanded(
                 child: Padding(
