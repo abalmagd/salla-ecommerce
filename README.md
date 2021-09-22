@@ -1,5 +1,7 @@
 # Salla
-E-Commerce app using flutter framework with BLoC state management, Dio, SQFlite, Shared Pref, and REST APIs.
+E-Commerce app using e-commerce API from @Softagi.
+This app was made using flutter framework.
+Technologies used: BLoC state management, Dio, SQFlite, Shared Pref, and REST APIs.
 
 ## Screenshots
 [Full Album](https://bit.ly/dartSalla)
