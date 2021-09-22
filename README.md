@@ -1,5 +1,5 @@
 # Salla
-E-Commerce app using e-commerce API from @Softagi.
+E-Commerce app using API from @Softagi.
 
 This app was made using flutter framework.
 
