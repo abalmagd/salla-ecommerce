@@ -6,8 +6,8 @@ E-Commerce app using flutter framework with BLoC state management, Dio, SQFlite,
 
 ###### Light Theme:
 
-![Home Page](https://ibb.co/rk5P0qZ)
+![Home Page](https://i.ibb.co/F68v3cB/Screenshot-1632267165.png)
 
 ###### DarkTheme:
 
-![Home Page](https://ibb.co/rk5P0qZ)
+![Home Page](https://i.ibb.co/Z8cVsZ6/home-screen.png)
