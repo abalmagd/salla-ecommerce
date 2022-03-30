@@ -4,11 +4,16 @@ E-Commerce app using REST API.
 This app was made using flutter framework.
 
 ## Technologies used 
-* BLoC state management
-###### Dio
-###### SQFLite
-###### REST APIs
-###### Shared Pref
+* BLoC state management 
+* Dio
+* SQFLite
+* REST APIs
+* Shared Pref
+
+## Features
+* Save products to your favorites
+* View products as List / Grid
+* Search with search history
 
 ## Screenshots
 [Full Album](https://bit.ly/dartSalla)
