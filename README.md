@@ -4,7 +4,7 @@ E-Commerce app using REST API.
 This app was made using flutter framework.
 
 ## Technologies used 
-###### BLoC state management
+* BLoC state management
 ###### Dio
 ###### SQFLite
 ###### REST APIs
